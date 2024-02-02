@@ -20,13 +20,10 @@ void check_gbnim(void) {
 
     // ==== SHARED CODE WITH C STARTS HERE ====
     entry = FORMAT_ENTRY(TYPE_TOOLS, "gbnim", "");
-    if (CHECK_PATTERN_AT_ADDR(sig_gbnim_startup_1, sig_gbnim_startup_1_at)) {
-        if (CHECK_PATTERN_AT_ADDR(sig_gbnim_startup_2, sig_gbnim_startup_2_at)) {
+    if (FIND_PATTERN_STR_NOTERM(sig_gbnim_exception_handle_string)) {
+        if (FIND_PATTERN_STR_NOTERM(sig_gbnim_index_out_of_bounds_string)) {
             entry_add(entry);
         }
-    }
-    else if (FIND_PATTERN_STR_NOTERM(sig_gbnim_exception_handle_string)) {
-            entry_add(entry);
     }
 
     // ==== SHARED CODE WITH C ENDS HERE ====
